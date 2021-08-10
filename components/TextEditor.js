@@ -22,7 +22,11 @@ function TextEditor() {
   const { id } = router.query;
 
   const [snapshot] = useDocumentOnce(
-    db.collection("userDocs").doc(session.user.email).collection("docs").doc(id)
+    db
+      .collection("userDocs")
+      .doc(session?.user?.email)
+      .collection("docs")
+      .doc(id)
   );
 
   useEffect(() => {
@@ -39,7 +43,7 @@ function TextEditor() {
     setEditorState(editorState);
 
     db.collection("userDocs")
-      .doc(session.user.email)
+      .doc(session?.user?.email)
       .collection("docs")
       .doc(id)
       .set(

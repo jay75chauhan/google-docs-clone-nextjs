@@ -10,7 +10,7 @@ function DocumentRow({ id, fileName, data }) {
   return (
     <div
       onClick={() => router.push(`/doc/${id}`)}
-      className="flex items-center bg-gray-50 p-4 pr-0 rounded-lg hover:bg-gray-100 mb-5 cursor-pointer shadow-md hover:shadow text-gray-700 text-sm active:scale-95"
+      className="flex items-center bg-white p-4 pr-0 rounded-lg hover:bg-gray-50 border-2 border-gray-300 hover:border-gray-400 mb-5 cursor-pointer shadow-md hover:shadow text-gray-700 text-sm active:scale-95"
     >
       <Icon name="article" size="3xl" color="blue" />
       <p className="flex-grow pl-5 w-10 truncate">{fileName}</p>

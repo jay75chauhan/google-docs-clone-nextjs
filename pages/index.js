@@ -15,11 +15,13 @@ import { useCollectionOnce } from "react-firebase-hooks/firestore";
 import { db } from "../firebase";
 import DocumentRow from "../components/DocumentRow";
 
-export default function Home({ session }) {
+export default function Home() {
+  const [session] = useSession();
+
   const [snapshot] = useCollectionOnce(
     db
       .collection("userDocs")
-      .doc(session.user.email)
+      .doc(session?.user?.email)
       .collection("docs")
       .orderBy("timestamp", "desc")
   );

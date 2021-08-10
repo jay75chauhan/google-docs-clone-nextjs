@@ -23,12 +23,12 @@ function MyApp({ Component, pageProps }) {
       <Provider session={pageProps.session}>
         <Component {...pageProps} />
       </Provider>
-      <Head>
+      <>
         <link
           href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet"
         />
-      </Head>
+      </>
     </>
   );
 }
