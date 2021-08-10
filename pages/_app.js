@@ -19,17 +19,17 @@ Router.events.on("routeChangeError", progress.finish);
 
 function MyApp({ Component, pageProps }) {
   return (
-    <>
+    <div>
+      <Provider session={pageProps.session}>
+        <Component {...pageProps} />
+      </Provider>
       <Head>
         <link
           href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet"
         />
       </Head>
-      <Provider session={pageProps.session}>
-        <Component {...pageProps} />
-      </Provider>
-    </>
+    </div>
   );
 }
 
