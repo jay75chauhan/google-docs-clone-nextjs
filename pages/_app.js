@@ -19,7 +19,7 @@ Router.events.on("routeChangeError", progress.finish);
 
 function MyApp({ Component, pageProps }) {
   return (
-    <div>
+    <>
       <Provider session={pageProps.session}>
         <Component {...pageProps} />
       </Provider>
@@ -29,7 +29,7 @@ function MyApp({ Component, pageProps }) {
           rel="stylesheet"
         />
       </Head>
-    </div>
+    </>
   );
 }
 

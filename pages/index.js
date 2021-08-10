@@ -15,9 +15,7 @@ import { useCollectionOnce } from "react-firebase-hooks/firestore";
 import { db } from "../firebase";
 import DocumentRow from "../components/DocumentRow";
 
-export default function Home() {
-  const [session] = useSession();
-
+export default function Home({ session }) {
   const [snapshot] = useCollectionOnce(
     db
       .collection("userDocs")
