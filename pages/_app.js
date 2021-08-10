@@ -24,10 +24,12 @@ function MyApp({ Component, pageProps }) {
         <Component {...pageProps} />
       </Provider>
       <>
-        <link
-          href="https://fonts.googleapis.com/icon?family=Material+Icons"
-          rel="stylesheet"
-        />
+        <Head>
+          <link
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+            rel="stylesheet"
+          />
+        </Head>
       </>
     </>
   );
