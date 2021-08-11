@@ -11,24 +11,26 @@ import Modal from "@material-tailwind/react/Modal";
 import ModalBody from "@material-tailwind/react/ModalBody";
 import ModalFooter from "@material-tailwind/react/ModalFooter";
 import Button from "@material-tailwind/react/Button";
-import { useCollectionOnce } from "react-firebase-hooks/firestore";
+import {
+  useCollection,
+  useCollectionOnce,
+} from "react-firebase-hooks/firestore";
 import { db } from "../firebase";
 import DocumentRow from "../components/DocumentRow";
 
 export default function Home() {
   const [session] = useSession();
+  if (!session) return <Login />;
+  const [showModel, setShowModel] = useState(false);
+  const [input, setInput] = useState("");
 
-  const [snapshot] = useCollectionOnce(
+  const [realtimePost] = useCollection(
     db
       .collection("userDocs")
       .doc(session?.user?.email)
       .collection("docs")
       .orderBy("timestamp", "desc")
   );
-
-  if (!session) return <Login />;
-  const [showModel, setShowModel] = useState(false);
-  const [input, setInput] = useState("");
 
   const createDocument = () => {
     if (!input) return;
@@ -120,7 +122,7 @@ export default function Home() {
             <Icon name="folder" size="3xl" color="gray" />
           </div>
 
-          {snapshot?.docs.map((doc) => (
+          {realtimePost?.docs.map((doc) => (
             <DocumentRow
               key={doc.id}
               id={doc.id}
