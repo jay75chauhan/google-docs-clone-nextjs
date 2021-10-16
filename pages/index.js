@@ -4,7 +4,7 @@ import firebase from "firebase";
 
 import Icon from "@material-tailwind/react/Icon";
 import Image from "next/image";
-import { getSession, useSession } from "next-auth/client";
+import { getSession } from "next-auth/client";
 import Login from "../components/Login";
 import { useEffect, useState } from "react";
 import Modal from "@material-tailwind/react/Modal";
@@ -18,8 +18,7 @@ import {
 import { db } from "../firebase";
 import DocumentRow from "../components/DocumentRow";
 
-export default function Home() {
-  const [session] = useSession();
+export default function Home({ session }) {
   if (!session) return <Login />;
   const [showModel, setShowModel] = useState(false);
   const [input, setInput] = useState("");
